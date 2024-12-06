@@ -1,0 +1,318 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Creative Resume</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background-color: #000000; /* Background set to black */
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #6a5acd; /* Indigo color for highlights */
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 0;
+      }
+      100% {
+        display: none;
+      }
+    }
+
+    /* Header */
+    .header {
+      background: #dcdcdc;
+      color: #333;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    /* About Me */
+    .about {
+      margin: 2rem;
+      text-align: left;
+    }
+
+    .about .details {
+      display: flex;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .about .details img {
+      margin-left: 1.5rem;
+    }
+
+    /* Section */
+    section {
+      margin: 2rem;
+      padding: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #6a5acd; /* Indigo highlights */
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 0.5rem 0;
+      max-width: 800px;
+    }
+
+    /* Skills and Achievements */
+    .skills-container {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .skills {
+      flex: 1;
+    }
+
+    .skills span {
+      font-size: 1.2rem;
+      background: #f8f8ff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 0.5rem 0;
+      color: #333;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .skills span:hover {
+      transform: scale(1.1);
+    }
+
+    .achievements {
+      flex: 1;
+    }
+
+    .achievements p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    /* Hobbies */
+    .hobbies .details {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .hobbies .details img {
+      margin-left: 1.5rem;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      color: #6a5acd;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Footer */
+    .footer {
+      background: #dcdcdc;
+      color: #333;
+      text-align: left;
+      padding: 1rem 2rem;
+      margin-top: auto; /* Keeps footer at the bottom */
+    }
+  </style>
+</head>
+<body>
+
+
+  <header class="header">
+    <h1>My Creative Resume</h1>
+    <img src="luffy.png" alt="Your Photo"> <!-- Your photo here -->
+<h2>Moshi Moshi korewa Monkey D Luffy!! 1JS22CS042<br>JSSATEB</h2>
+  </header>
+
+  <section class="about">
+    <h2>About Me</h2>
+    <div class="details">
+      <p><b>I’m a passionate web developer with a love for design and innovation.</b></p>
+      <img src="web.jpg" alt="Your Photo">
+    </div>
+    <div class="details">
+      <p><b>I specialize in creating interactive and user-friendly applications.</b></p>
+      <img src="app.avif" alt="Your Photo">
+    </div>
+    <div class="details">
+      <p></b>My goal is to build scalable, efficient, and beautiful web apps.</b></p>
+      <img src="scal.avif" alt="Your Photo">
+    </div>
+  </section>
+
+
+
+  <section class="skills">
+  <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skills">
+        <span>HTML5</span>
+      </div>
+      <div class="achievements">
+        <p><strong>Activities: Built SEO-friendly websites with high accessibility.<br>Created web projects ensuring clear structure and optimal accessibility for all users.</p>
+      </div>
+    </div>
+</section>
+
+  <section class="skills">
+    <div class="skills-container">
+      <div class="skills">
+        <span>CSS3</span>
+      </div>
+      <div class="achievements">
+        <p><strong>Activities: Designed responsive, modern layouts.<br> Created fluid layouts and responsive designs with flexbox and grid systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills">
+    <div class="skills-container">
+      <div class="skills">
+        <span>JavaScript</span>
+      </div>
+      <div class="achievements">
+        <p><strong>Activities: Developed dynamic, interactive UIs.<br>Built interactive websites with vanilla JavaScript and DOM manipulation.</p>
+      </div>
+    </div>
+</section>
+
+  <section class="skills">
+    <div class="skills-container">
+      <div class="skills">
+        <span>React</span>
+      </div>
+      <div class="achievements">
+        <p><strong>Activities: Created reusable components for scalable apps.<br>Developed React applications using state and props for dynamic rendering.</p>
+      </div>
+    </div>
+</section>
+
+  <section class="skills">
+    <div class="skills-container">
+      <div class="skills">
+        <span>Node.js</span>
+      </div>
+      <div class="achievements">
+        <p><strong>Activities: Built APIs for real-time applications.<br>Developed server-side applications using Express.js and MongoDB.</p>
+      </div>
+    </div>
+</section>
+
+  <section class="hobbies">
+    <h2>Hobbies</h2>
+    <div class="details">
+      <p>I love trading and am a crypto enthusiast.</p>
+      <img src="cry.jpg" alt="Photography">
+    </div>
+    <div class="details">
+      <p>In my free time, I enjoy exercising.</p>
+      <img src="exc.jpg" alt="Hiking">
+    </div>
+  </section>
+
+<section class="social" style="text-align: center;">
+  <h2 style="font-size: 2rem; color: #6a5acd;">Connect with Me</h2>
+  <div class="social-links" style="display: flex; justify-content: center; gap: 1rem;">
+    <a href="mailto:your-email@example.com"><img src="mail.jpg" alt="Email"></a>
+<a href="https://linkedin.com" target="_blank"><img src="link.jpg" alt="Linkedin"></a>
+    <a href="https://github.com/yourgithub" target="_blank"><img src="gith.jpg" alt="GitHub"></a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank"><img src="insta.jpg" alt="Instagram"></a>
+    <a href="https://twitter.com/yourprofile" target="_blank"><img src="x.jpg" alt="Twitter"></a>
+    <a href="https://leetcode.com/yourprofile" target="_blank"><img src="leet.avif" alt="LeetCode"></a>
+  </div>
+</section>
+
+
+  <footer class="footer">
+    <p>Made by future pirate king</p>
+  </footer>
+
+  <script>
+    // Smooth pop-out animation on scroll
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target); // Stop observing once it's visible
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
