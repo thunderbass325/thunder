@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Registration Form</title>
+    <style>
+        body {
+            background-color: lavender;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 4px solid #E6E6FA;
+            border-radius: 10px;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #E6E6FA;
+            font-size: 36px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #fdf3e4;
+        }
+
+        input, textarea, select {
+            width: 80%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #E6E6FA;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            background-color: #444;
+            outline: none;
+            border-color: #E6E6FA;
+            transform: scale(1.05);
+        }
+
+        button {
+            background-color: #E6E6FA;
+            color: black;
+            padding: 15px 80px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #D3D3D3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            input, textarea, select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Registration Form</h1>
+        <form id="registrationForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter valid Name" required aria-required="true">
+
+            <label for="usn">USN:</label>
+            <input type="text" id="usn" name="usn" placeholder="Enter valid USN" required aria-required="true"> 
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter valid Email" required aria-required="true">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required aria-required="true">
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter valid phone number" 
+                   pattern="[0-9]{10}" title="Phone number must be 10 digits" required aria-required="true">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required aria-required="true">
+                <option value="select">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="message">Additional Message:</label>
+            <textarea id="message" name="message" placeholder="Message"></textarea>
+            
+            <button type="submit">Submit</button>
+            <button type="reset" style="margin-left: 10px;">Clear</button>
+        </form>
+    </div>
+
+    <div id="displayArea" style="display: none; text-align: center;">
+        <h2>Registered Details</h2>
+        <p id="fullNameDisplay"></p>
+        <p id="usnDisplay"></p>
+        <p id="emailDisplay"></p>
+        <p id="dobDisplay"></p>
+        <p id="phoneNumberDisplay"></p>
+        <p id="genderDisplay"></p>
+        <p id="messageDisplay"></p>
+        <button onclick="printData()">Print Data</button>
+    </div>
+
+    <script>
+function printData() {
+    const fullName = document.getElementById('fullNameDisplay').textContent;
+    const usn = document.getElementById('usnDisplay').textContent;
+    const email = document.getElementById('emailDisplay').textContent;
+    const dob = document.getElementById('dobDisplay').textContent;
+    const phoneNumber = document.getElementById('phoneNumberDisplay').textContent;
+    const gender = document.getElementById('genderDisplay').textContent;
+    const message = document.getElementById('messageDisplay').textContent;
+
+    const data = `${fullName}\n${usn}\n${email}\n${dob}\n${phoneNumber}\n${gender}\n${message}`;
+
+    const element = document.createElement('a');
+    const file = new Blob([data], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = 'registration_data.txt';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element); // Clean up after download
+}
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const usn = document.getElementById('usn').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const gender = document.getElementById('gender').value;
+            const message = document.getElementById('message').value;
+
+            if (!/^\d{10}$/.test(phoneNumber)) {
+                alert("Phone number must be 10 digits.");
+                return;
+            }
+
+            document.getElementById('fullNameDisplay').textContent = `Full Name: ${fullName}`;
+            document.getElementById('usnDisplay').textContent = `USN: ${usn}`;
+            document.getElementById('emailDisplay').textContent = `Email: ${email}`;
+            document.getElementById('dobDisplay').textContent = `Date of Birth: ${dob}`;
+            document.getElementById('phoneNumberDisplay').textContent = `Phone Number: ${phoneNumber}`;
+            document.getElementById('genderDisplay').textContent = `Gender: ${gender}`;
+            document.getElementById('messageDisplay').textContent = `Additional Message: ${message}`;
+
+            document.getElementById('displayArea').style.display = 'block';
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+</body>
+</html>
