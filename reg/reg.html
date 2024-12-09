@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Registration Form</title>
+    <style>
+        body {
+            background-color: lavender; /* Background color set to lavender */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 4px solid #E6E6FA; /* Lavender border */
+            border-radius: 10px;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease-in-out;
+            text-align: center; /* Center form elements */
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Georgia', serif;
+            color: #E6E6FA; /* Lavender text color */
+            font-size: 36px;
+            letter-spacing: 2px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #fdf3e4;
+        }
+
+        input, textarea, select {
+            width: 80%; /* Adjust width to make elements smaller and centered */
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #E6E6FA; /* Lavender border for input fields */
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 18px;
+            transition: all 0.3s ease; /* Added transition for smooth animation */
+        }
+
+        input:focus, textarea:focus, select:focus {
+            background-color: #444;
+            outline: none;
+            border-color: #E6E6FA; /* Lavender border color on focus */
+            transform: scale(1.05); /* Slight scale effect on focus for animation */
+        }
+
+        button {
+            background-color: #E6E6FA; /* Lavender button color */
+            color: black;
+            padding: 15px 80px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #D3D3D3; /* Slightly darker lavender on hover */
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animation when typing in the input */
+        input, textarea, select {
+            animation: typingAnimation 0.5s ease-out forwards;
+        }
+
+        /* Typing animation for the input fields */
+        @keyframes typingAnimation {
+            from {
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Center align the form on mobile and tablet devices */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            input, textarea, select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Registration Form</h1>
+        <form id="registrationForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter valid Name" required>
+
+            <label for="usn">USN:</label>
+            <input type="text" id="usn" name="usn" placeholder="Enter valid USN" required> 
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter valid Email" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter valid phone number" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="select">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="message">Additional Message:</label>
+            <textarea id="message" name="message" placeholder="Message"></textarea>
+            
+            <center>
+            <button type="submit">Submit</button>
+            </center>
+        </form>
+    </div>
+
+    <div id="displayArea" style="display: none;">
+        <h2>Registered Details</h2>
+        <p id="fullNameDisplay"></p>
+        <p id="usnDisplay"></p>
+        <p id="emailDisplay"></p>
+        <p id="dobDisplay"></p>
+        <p id="phoneNumberDisplay"></p>
+        <p id="genderDisplay"></p>
+        <p id="messageDisplay"></p>
+        <button onclick="printData()">Print Data</button>
+    </div>
+
+    <script>
+        function printData() {
+            const fullName = document.getElementById('fullName').value;
+            const usn = document.getElementById('usn').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const gender = document.getElementById('gender').value;
+            const message = document.getElementById('message').value;
+
+            const data = `Full Name: ${fullName}\nUSN: ${usn}\nEmail: ${email}\nDate of Birth: ${dob}\nPhone Number: ${phoneNumber}\nGender: ${gender}\nAdditional Message: ${message}`;
+
+            const element = document.createElement('a');
+            const file = new Blob([data], {type: 'text/plain'});
+            element.href = URL.createObjectURL(file);
+            element.download = 'registration_data.txt';
+            document.body.appendChild(element);
+            element.click();
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const usn = document.getElementById('usn').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const gender = document.getElementById('gender').value;
+            const message = document.getElementById('message').value;
+
+            document.getElementById('fullNameDisplay').textContent = `Full Name: ${fullName}`;
+            document.getElementById('usnDisplay').textContent = `USN: ${usn}`;
+            document.getElementById('emailDisplay').textContent = `Email: ${email}`;
+            document.getElementById('dobDisplay').textContent = `Date of Birth: ${dob}`;
+            document.getElementById('phoneNumberDisplay').textContent = `Phone Number: ${phoneNumber}`;
+            document.getElementById('genderDisplay').textContent = `Gender: ${gender}`;
+            document.getElementById('messageDisplay').textContent = `Additional Message: ${message}`;
+
+            document.getElementById('displayArea').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
